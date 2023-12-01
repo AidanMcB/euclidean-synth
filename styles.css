@@ -1,0 +1,10 @@
+.container {
+    display: grid;
+    grid-template-rows: repeat(1fr, 7);
+}
+.sq {
+    border: 3px solid black;
+    background: midnightblue;
+    height: 100px;
+    width: 100px;
+};
