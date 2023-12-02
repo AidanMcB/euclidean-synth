@@ -75,13 +75,13 @@ function bresenhamEuclidean(onsets, totalPulses) {
 }
 
 
-function randomColorGen() {
-    const r = Math.floor(Math.random() * 255);
-    const g = Math.floor(Math.random() * 255);
-    const b = Math.floor(Math.random() * 255);
+// function randomColorGen() {
+//     const r = Math.floor(Math.random() * 255);
+//     const g = Math.floor(Math.random() * 255);
+//     const b = Math.floor(Math.random() * 255);
 
-    return { r, g, b}
-}
+//     return { r, g, b}
+// }
 
 async function audioTeture() {
     // create web audio api context

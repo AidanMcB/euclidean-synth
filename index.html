@@ -3,37 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas Test</title>
-    <script src="./index.js"></script>
+    <title>Euclidean Synthesizer</title>
+    <script type="module" src="./src/synth.js"></script>
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <input type="hidden" value="stopped"/>
+
+    <!-- <input type="range" /> -->
+    <br/>
+
+    <!-- <button class="test-btn">Single Beep</button> -->
+    <input type="hidden" value="un-initialized"/>
+
     <h2>Modulate</h2>
-    <button class="audio-btn">Start</button>
-    <div class="container">
-        <div class="sq square-0">
 
+    <div class="controls">
+        <label for="beats-select">Beats:</label>
+        <select class="beats-select" id="beats-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option selected value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+        </select>
+
+        <label for="steps-select">Steps:</label>
+        <select class="steps-select" id="steps-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option selected value="16">16</option>
+        </select>
+
+        <button class="start-audio-btn">Start</button>
+        <button class="stop-audio-btn disabled" disabled>Stop</button>
+
+    </div>
+    
+    <div class="synth-wrapper">
+        <div class="synth synth-grid">
+            <div class="key square-0"></div>
+            <div class="key square-1"></div>
+            <div class="key square-2"></div>
+            <div class="key square-3"></div>
+            <div class="key square-4"></div>
+            <div class="key square-5"></div>
+            <div class="key square-6"></div>
+            <div class="key square-7"></div>
+            <div class="key square-8"></div>
+            <div class="key square-9"></div>
+            <div class="key square-10"></div>
+            <div class="key square-11"></div>
+            <div class="key square-12"></div>
+            <div class="key square-13"></div>
+            <div class="key square-14"></div>
+            <div class="key square-15"></div>
+    
         </div>
-        <div class="sq square-1">
-
-        </div>
-        <div class="sq square-2">
-
-        </div>
-        <div class="sq square-3">
-
-        </div>
-        <div class="sq square-4">
-
-        </div>
-        <div class="sq square-5">
-
-        </div>
-        <div class="sq square-6">
-
-        </div>
-
     </div>
 </body>
 </html>
