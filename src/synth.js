@@ -6,6 +6,7 @@ class EuclideanSynthesizer {
 
     constructor() {
         this.bpm = 200;
+        this.pitch = 200;
         this.running = false;
         this.beats = 8;
         this.steps = 16;
@@ -82,40 +83,24 @@ class EuclideanSynthesizer {
         this.oscillator = this.audioCtx.createOscillator();
 
         this.oscillator.type = 'sawtooth';
-        const pitch = 200;
-        this.oscillator.frequency.setValueAtTime(pitch, this.audioCtx.currentTime); // value in hertz
+        this.oscillator.frequency.setValueAtTime(this.pitch, this.audioCtx.currentTime); // value in hertz
         this.oscillator.connect(this.audioCtx.destination);
         this.isAudioContextInitialized = true;
     };
 
-    async singleBeep() {
-        this.playOscillator(this.audioCtx.currentTime, this.audioCtx.currentTime + 0.2);
-    };
-
-    testFunc(testButton) {
-        console.log('RAN');
-        this.singleBeep();
-    };
-
-    playOscillator(startTime, endTime) {
+    singleBeep() {
+        const startTime = this.audioCtx.currentTime;
+        const endTime = this.audioCtx.currentTime + 0.2;
         this.oscillator = this.audioCtx.createOscillator();
         this.oscillator.connect(this.audioCtx.destination);
         this.oscillator.start(startTime);
         this.oscillator.stop(endTime);
     };
 
-    startOscillator() {
-        // this.oscillator.start();
-        this.playOscillator(this.audioCtx.currentTime, this.audioCtx.currentTime + 0.2);
-        // this.playOscillator(this.audioCtx.currentTime + 1, this.audioCtx.currentTime + 1.5);
-    };
-
-    stopOscillator() {
-        this.oscillator.stop();
-    };
-
-    adjustFrequency() {
-
+    adjustPitch(pitchDisplay, newVal) {
+        this.pitch = newVal;
+        pitchDisplay.innerHTML = newVal;
+        this.oscillator.frequency.value = 900
     };
 
     drawBeatPatternInUI() {
@@ -138,6 +123,7 @@ class EuclideanSynthesizer {
 
     setBeats(setBeats) {
         this.beats = parseInt(setBeats);
+        this.drawBeatPatternInUI();
     };
 
     setSteps(setSteps) {
@@ -175,6 +161,8 @@ class EuclideanSynthesizer {
                 }
             });
         }
+
+        this.drawBeatPatternInUI();
      
     };
 
@@ -198,13 +186,11 @@ class EuclideanSynthesizer {
         this.drawBeatPatternInUI();
 
         // Disable some control panel options
-        document.querySelector('.beats-select').setAttribute('disabled', true);
-        document.querySelector('.steps-select').setAttribute('disabled', true);
+        this.toggleDisableControlPanel(true);
         
         this.running = true;
         this.modulateIt();
     };
-
 
     stopSynth(startButton, stopButton) {
         startButton.removeAttribute('disabled');
@@ -213,8 +199,7 @@ class EuclideanSynthesizer {
         stopButton.classList.add('disabled');
 
         this.running = false;
-        document.querySelector('.beats-select').removeAttribute('disabled');
-        document.querySelector('.steps-select').removeAttribute('disabled');
+        this.toggleDisableControlPanel(false)
     };
 
     drawNewSynth() {
@@ -229,6 +214,26 @@ class EuclideanSynthesizer {
             synth.append(key);
         }
     };
+
+    toggleDisableControlPanel(disable) {
+        // controls
+        const controlPanel = document.querySelector('.controls');
+        const controlOptions = Array.from(controlPanel.querySelectorAll('select, input'));
+
+        if (disable === true) {
+            controlOptions.map(controlOpt => {
+                controlOpt.setAttribute('disabled', true);
+                controlOpt.classList.add('disabled');
+            });
+        } else {
+            controlOptions.map(controlOpt => {
+                controlOpt.removeAttribute('disabled');
+                controlOpt.classList.remove('disabled');
+            });
+        }
+
+    }
+
 
 };
 
@@ -262,6 +267,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
     this.stepSelect.addEventListener('change', (event) => {
         mainSynth.setSteps(event.target.value);
+    });
+
+    let pitchInput = document.querySelector('.pitch-input');
+    let pitchDisplay = document.querySelector('.pitch-display');
+
+    pitchDisplay.innerHTML = 200;
+    pitchInput.addEventListener('change', (e) => {
+        mainSynth.adjustPitch(pitchDisplay, e.target.value);
     });
 
 });

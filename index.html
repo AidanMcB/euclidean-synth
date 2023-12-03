@@ -9,8 +9,6 @@
 </head>
 <body>
 
-    <!-- <input type="range" /> -->
-    <br/>
 
     <!-- <button class="test-btn">Single Beep</button> -->
     <input type="hidden" value="un-initialized"/>
@@ -18,71 +16,82 @@
     <h2>Modulate</h2>
 
     <div class="controls">
-        <label for="beats-select">Beats:</label>
-        <select class="beats-select" id="beats-select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option selected value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-        </select>
 
-        <label for="steps-select">Steps:</label>
-        <select class="steps-select" id="steps-select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option selected value="16">16</option>
-        </select>
+        <div class="beats">
+            <label for="beats-select">Beats:</label>
+            <select class="beats-select" id="beats-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option selected value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+            </select>
+        </div>
+
+        <div class="steps">
+            <label for="steps-select">Steps:</label>
+            <select class="steps-select" id="steps-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option selected value="16">16</option>
+            </select>
+        </div>
+
+        <div class="pitch">
+            <label for="pitch-input">Pitch:</label>
+            <input type="range" class="pitch-input" value="200" min="100" max="1000"/>
+            <span class="pitch-display"></span>
+        </div>
+
 
         <button class="start-audio-btn">Start</button>
         <button class="stop-audio-btn disabled" disabled>Stop</button>
 
     </div>
     
-    <div class="synth-wrapper">
-        <div class="synth synth-grid">
-            <div class="key square-0"></div>
-            <div class="key square-1"></div>
-            <div class="key square-2"></div>
-            <div class="key square-3"></div>
-            <div class="key square-4"></div>
-            <div class="key square-5"></div>
-            <div class="key square-6"></div>
-            <div class="key square-7"></div>
-            <div class="key square-8"></div>
-            <div class="key square-9"></div>
-            <div class="key square-10"></div>
-            <div class="key square-11"></div>
-            <div class="key square-12"></div>
-            <div class="key square-13"></div>
-            <div class="key square-14"></div>
-            <div class="key square-15"></div>
-    
-        </div>
+    <div class="synth synth-grid">
+        <div class="key square-0"></div>
+        <div class="key square-1"></div>
+        <div class="key square-2"></div>
+        <div class="key square-3"></div>
+        <div class="key square-4"></div>
+        <div class="key square-5"></div>
+        <div class="key square-6"></div>
+        <div class="key square-7"></div>
+        <div class="key square-8"></div>
+        <div class="key square-9"></div>
+        <div class="key square-10"></div>
+        <div class="key square-11"></div>
+        <div class="key square-12"></div>
+        <div class="key square-13"></div>
+        <div class="key square-14"></div>
+        <div class="key square-15"></div>
     </div>
+
+    
 </body>
 </html>
